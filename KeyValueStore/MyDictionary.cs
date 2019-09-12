@@ -39,8 +39,7 @@ namespace KeyValueStore
             }
             //search array for key and replace the KeyValue with new one
             //new KeyValue if doesn't exist
-            //not found, make new array one above old array, copy to new array, add the new values, 
-            //clear the old array, resize the old array and then copy the new array into the old array
+           
             set
             {
                 
