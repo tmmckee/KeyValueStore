@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace KeyValueStore
 {
@@ -11,18 +9,16 @@ namespace KeyValueStore
             get { return this.keyValues.Length; }
         }
 
-        KeyValue[] keyValues = new KeyValue[]
+        KeyValue<int>[] keyValues = new KeyValue<int>[]
         {
-            new KeyValue("Jubilee", 5),
-            new KeyValue("Cyclops", "bzzz"),
-            new KeyValue("Jean Gray", 3),
-            new KeyValue("Commander X", 10),
-            new KeyValue("Gambit", 4)
+            new KeyValue<int>("Jubilee", 5),
+            new KeyValue<int>("Cyclops", 10),
+            new KeyValue<int>("Jean Gray", 3),
+            new KeyValue<int>("Commander X", 10),
+            new KeyValue<int>("Gambit", 4)
         };
-        
-        
 
-        public object this[string index]
+        public int this[string index]
         {
             //search array for key and return associated value
             //throw KeyNotFoundException if key doesn't exist
@@ -30,7 +26,7 @@ namespace KeyValueStore
             {
                 for (int i = 0; i < keyValues.Length; i++)
                 {
-                    if(index==keyValues[i].key)
+                    if (index == keyValues[i].key)
                     {
                         return keyValues[i].value;
                     }
@@ -39,23 +35,23 @@ namespace KeyValueStore
             }
             //search array for key and replace the KeyValue with new one
             //new KeyValue if doesn't exist
-           
+
             set
             {
-                
+
                 for (int i = 0; i < keyValues.Length; i++)
                 {
                     if (index == keyValues[i].key)
                     {
-                        keyValues[i] = new KeyValue(index, value);
+                        keyValues[i] = new KeyValue<int>(index, value);
                     }
                 }
-                KeyValue[] keyValuesCopy = new KeyValue[keyValues.Length + 1];
-                for (int j = 0; j < keyValuesCopy.Length-1; j++)
+                KeyValue<int>[] keyValuesCopy = new KeyValue<int>[keyValues.Length + 1];
+                for (int j = 0; j < keyValuesCopy.Length - 1; j++)
                 {
                     keyValuesCopy[j] = keyValues[j];
                 }
-                keyValuesCopy[keyValuesCopy.Length-1] = new KeyValue(index, value);
+                keyValuesCopy[keyValuesCopy.Length - 1] = new KeyValue<int>(index, value);
                 keyValues = keyValuesCopy;
             }
         }

@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace KeyValueStore
+﻿namespace KeyValueStore
 {
-    struct KeyValue
+    struct KeyValue<T>
     {
         public readonly string key;
-        public readonly object value;
+        public readonly T value;
 
-        public KeyValue(string k, object v)
+        public KeyValue(string k, T v)
         {
             this.key = k;
             this.value = v;
